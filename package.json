@@ -1,0 +1,13 @@
+{
+  "name": "task-flow",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Aplicación personal de gestión de tareas",
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "test": "npm run test --workspaces --if-present"
+  }
+}
