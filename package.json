@@ -9,5 +9,8 @@
   ],
   "scripts": {
     "test": "npm run test --workspaces --if-present"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
   }
 }
