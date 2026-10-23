@@ -29,7 +29,7 @@ La API y la aplicación web se desarrollarán por separado dentro del mismo repo
 
 ## Estado del proyecto
 
-El proyecto se encuentra en la etapa de preparación del repositorio. La implementación funcional está pendiente.
+Los incrementos iniciales de la Etapa 1 están implementados: API mínima con Fastify (`GET /health`) y frontend React + Vite. La aceptación formal de la Etapa 1 sigue pendiente (criterios no completados). Los componentes siguientes (persistencia, autenticación, gestión de tareas) se desarrollarán en etapas posteriores.
 
 Consulta [PROGRESS.md](PROGRESS.md) para conocer el estado actual y [PLAN.md](PLAN.md) para revisar las etapas de desarrollo.
 
@@ -41,8 +41,60 @@ La especificación completa se encuentra en [SPEC.md](SPEC.md).
 
 ## Desarrollo
 
-Las instrucciones de instalación, configuración y ejecución se incorporarán a medida que se implementen y verifiquen los componentes del proyecto.
+### Instalación
 
+Desde la raíz del repositorio:
+
+```bash
+npm ci
+```
+
+### Ejecución
+
+#### API
+
+Levanta el servidor de desarrollo:
+
+```bash
+npm run dev --workspace=@task-flow/api
+```
+
+Compilar y ejecutar en producción:
+
+```bash
+npm run build --workspace=@task-flow/api
+npm start --workspace=@task-flow/api
+```
+
+El servidor responde en `http://localhost:3000` por defecto. El endpoint `GET /health` devuelve `{"status":"ok"}`.
+
+#### Frontend
+
+Levanta el entorno de desarrollo:
+
+```bash
+npm run dev --workspace=@task-flow/web
+```
+
+Compilar para producción:
+
+```bash
+npm run build --workspace=@task-flow/web
+```
+
+El servidor de desarrollo está disponible en `http://localhost:5173`.
+
+#### Pruebas
+
+Ejecuta las pruebas de todos los workspaces desde la raíz:
+
+```bash
+npm test
+```
+
+### Notas
+
+La API y el frontend se ejecutan en terminales separadas. La API utiliza el puerto 3000 y el frontend el 5173 por defecto; ambos pueden ejecutarse simultáneamente si sus respectivos puertos están disponibles.
 ## Licencia
 
 Pendiente de definir.

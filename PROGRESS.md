@@ -4,7 +4,7 @@
 
 **Etapa:** Etapa 1 — Esqueleto ejecutable.
 
-**Estado:** Incremento 1 completado: API mínima ejecutable con Fastify y TypeScript. Las pruebas automatizadas, la compilación y el arranque de la versión compilada fueron verificados. Pendiente implementar y verificar la aplicación web React + Vite y completar los criterios de aceptación de la etapa.
+**Estado:** Incremento 1 (API) e Incremento 2 (Web) implementados y verificados. Las pruebas automatizadas, compilaciones y ejecución de ambos servicios fueron comprobadas. Los cuatro criterios técnicos de aceptación de la Etapa 1 se han verificado siguiendo el `README.md`, incluida una instalación limpia y la ejecución simultánea. Pendiente revisión formal y aprobación de ambos incrementos antes de crear sus commits. La etapa permanece abierta hasta completar dicha revisión y su cierre formal.
 
 ## 2. Documentación del proyecto
 
@@ -48,6 +48,16 @@
 - [x] Verificar que el servidor compilado arranca correctamente.
 - [x] Verificar que `GET /health` responde HTTP 200 con `{"status":"ok"}`.
 
+### Etapa 1 — Incremento 2: Frontend React + Vite
+
+- [x] Configurar `package.json` del frontend con React, Vite y TypeScript.
+- [x] Crear `index.html`, `vite.config.ts`, `tsconfig.json`.
+- [x] Crear los archivos de la app (`src/main.tsx`, `src/App.tsx`, `src/index.css`, `src/vite-env.d.ts`).
+- [x] Instalar dependencias con `npm install` (55 packages added).
+- [x] Verificar `npm run build --workspace=@task-flow/web`: 29 modules, built in 530ms.
+- [x] Verificar el arranque del dev server: Vite v6.4.5 ready on http://localhost:5173.
+- [x] Verificar las pruebas del frontend y ejecutar `npm test` desde la raíz: las pruebas de API y frontend pasaron.
+
 ## 4. Verificaciones
 
 ### Entorno y repositorio
@@ -62,6 +72,14 @@
 - Las reglas de exclusión de `.gitignore` fueron comprobadas mediante `git check-ignore`.
 - Commit inicial: `be2d127` — `chore: initialize TaskFlow`.
 - La Etapa 0 fue cerrada mediante el commit `556261d` — `docs: close repository setup stage`.
+
+### Actualización de dependencias y seguridad
+
+- Se actualizaron las dependencias de desarrollo de Vitest a `4.1.12` en ambos workspaces.
+- `npm ls vitest @vitest/mocker tinypool` confirmó Vitest `4.1.12` compartido por ambos workspaces.
+- `npm audit` informó cero vulnerabilidades después de la actualización.
+- `npm test` ejecutado desde la raíz: 2 pruebas aprobadas (1 de API y 1 de frontend).
+- Compilaciones de API y frontend verificadas correctamente tras la actualización.
 
 ### API
 
@@ -78,20 +96,37 @@
 - `GET /health` respondió HTTP 200 con `{"status":"ok"}`.
 - El modo desarrollo y el servidor compilado usan el puerto 3000 por defecto; no deben ejecutarse simultáneamente en ese puerto.
 
+### Incrementos implementados y verificados frente a pendientes de aceptación
+
+**Implementados y verificados:**
+1. Incremento 1 (API): pruebas, build, dev server y servidor compilado verificados sin errores. Queda pendiente revisión formal y commit del incremento.
+2. Incremento 2 (Web): pruebas automatizadas, build y servidor de desarrollo verificados. Las pruebas de API y frontend también se ejecutaron desde la raíz con `npm test` y ambas pasaron.
+
+**Pendientes de aceptación:**
+
+- [ ] Revisar formalmente y aprobar el Incremento 1 antes de crear su commit.
+- [ ] Revisar formalmente y aprobar el Incremento 2 antes de crear su commit.
+- [ ] Registrar el resultado de la revisión y cerrar formalmente la Etapa 1 una vez aprobados los incrementos.
+
+### Frontend web
+
+- Biblioteca: React 19 + ReactDOM.
+- Herramienta de compilación: Vite 6.
+- Lenguaje: TypeScript con destino ES2020 y JSX (`react-jsx`).
+- Desarrollo: `npm run dev --workspace=@task-flow/web`.
+- Compilación: `npm run build --workspace=@task-flow/web`.
+- Pruebas: `npm test --workspace=@task-flow/web`.
+- Resultado de `vite build`: `index.html` (0.39 kB), CSS (0.32 kB), JS (224.16 kB, gzip 69.61 kB).
+
 ## 5. Bloqueos y pendientes
 
-- [ ] Implementar la aplicación web con React y Vite.
-- [ ] Verificar el arranque de la aplicación web.
-- [ ] Revisar los comandos de ejecución de ambos componentes desde la raíz.
-- [ ] Completar los criterios de aceptación de la Etapa 1.
-- [ ] Revisar y aceptar formalmente el conjunto de cambios del Incremento 1.
-- [ ] Crear el commit del Incremento 1 después de la revisión y aprobación.
+- [ ] Revisar formalmente y aprobar el Incremento 1 antes de crear su commit.
+- [ ] Revisar formalmente y aprobar el Incremento 2 antes de crear su commit.
+- [ ] Cerrar formalmente la Etapa 1 después de la aprobación de los incrementos.
 
 ## 6. Siguiente paso
 
-Continuar con el Incremento 2 de la Etapa 1: implementar la aplicación web mínima con React y Vite.
-
-Mantener el alcance limitado al esqueleto ejecutable. No incorporar todavía PostgreSQL, autenticación ni gestión de tareas.
+Revisar formalmente los incrementos 1 (API) y 2 (Web), comprobar los criterios de aceptación pendientes de la Etapa 1 y obtener aprobación antes de crear los commits correspondientes. Mantener el alcance limitado al esqueleto ejecutable; no incorporar todavía PostgreSQL, autenticación ni gestión de tareas.
 
 ## 7. Registro de decisiones y verificaciones
 
